@@ -1,0 +1,105 @@
+.back-link {
+  display: inline-block;
+  margin-bottom: 1rem;
+  color: #0077cc;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.product-title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #222;
+  text-align: center;
+}
+
+/* Kontejner za sliku */
+.image-container {
+  width: 100%;
+  max-width: 400px;
+  height: 400px;
+  margin: 0 auto 1.5rem;
+  overflow: hidden;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f8f8f8;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+.product-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+  display: block;
+}
+
+.product-image:hover {
+  transform: scale(1.05);
+}
+
+/* Modal */
+#modal-toggle {
+  display: none;
+}
+
+#modal-toggle:checked + .image-container + .modal {
+  display: flex;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal img {
+  max-width: 90vw;
+  max-height: 80vh;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  object-fit: contain;
+}
+
+.modal label {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 2.5rem;
+  color: white;
+  cursor: pointer;
+  user-select: none;
+  font-weight: bold;
+}
+
+/* Info sekcija */
+.info-box {
+  background-color: #f0f2f5;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  max-width: 400px;
+  margin: 1.5rem auto 0 auto;
+  color: #333;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.price {
+  font-weight: 700;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #2c3e50;
+}
+
+.description {
+  line-height: 1.6;
+  font-size: 1rem;
+  color: #555;
+}

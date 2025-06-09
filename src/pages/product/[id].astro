@@ -1,0 +1,49 @@
+---
+import { products } from '../../data/products.js';
+import DefaultLayout from '../../layouts/DefaultLayout.astro';
+
+// Uvoz CSS-a
+import '../../styles/product.css';
+
+export const getStaticPaths = () => {
+  return products.map(product => ({
+    params: { id: product.id.toString() }
+  }));
+};
+
+const { id } = Astro.params;
+const product = products.find(p => p.id.toString() === id);
+---
+
+<DefaultLayout>
+  {product ? (
+    <>
+      <a href="/" class="back-link">← Nazad na početnu</a>
+      <h2 class="product-title">{product.name}</h2>
+
+      <!-- Checkbox koji kontroliše modal -->
+      <input type="checkbox" id="modal-toggle" />
+      <label for="modal-toggle" class="image-container" title="Klikni za uvećanje">
+        <img
+          src={product.image}
+          alt={product.name}
+          class="product-image"
+          loading="lazy"
+        />
+      </label>
+
+      <!-- Modal sa uvećanom slikom -->
+      <label for="modal-toggle" class="modal" aria-label="Zatvori uvećanu sliku">
+        <img src={product.image} alt={product.name} />
+        ×
+      </label>
+
+      <div class="info-box">
+        <p class="price">{product.price.toLocaleString('sr-RS')} €</p>
+        <p class="description">{product.description}</p>
+      </div>
+    </>
+  ) : (
+    <p>Proizvod nije pronađen.</p>
+  )}
+</DefaultLayout>

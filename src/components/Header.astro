@@ -1,0 +1,32 @@
+---
+const siteTitle = "Tech Store";
+---
+
+<header style="display: flex; align-items: center; justify-content: space-between; padding: 1rem 2rem; background-color: #f8f8f8; border-bottom: 1px solid #ddd;">
+  <!-- Logo + naziv sajta -->
+  <a href="/" style="display: flex; align-items: center; gap: 1rem; text-decoration: none;">
+    <img src="/logo.png" alt="Logo" style="height: 45px;" />
+    <span style="
+      font-size: 1.7rem;
+      font-weight: bold;
+      font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+      background: linear-gradient(to right,rgb(2, 96, 203),rgb(86, 211, 250));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    ">
+      {siteTitle}
+    </span>
+  </a>
+
+  <!-- Link ka korpi -->
+    <nav style="display: flex; gap: 1.5rem; align-items: center;">
+    <a href="/cart" style="text-decoration: none; color: #007bff; font-size: 1.2rem;">
+        🛒 Korpa
+    </a>
+    </nav>
+
+</header>
+
+
