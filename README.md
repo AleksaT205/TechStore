@@ -1,3 +1,207 @@
+On English:
+# 🛒 Tech Store – Web Shop Built with Astro + React Technology
+
+## 📌 Project Description
+
+**Tech Store** is a modern web shop built using the [Astro](https://astro.build) framework and the [React](https://reactjs.org) library. The main goal of the project is to demonstrate **high performance of a static site** combined with **dynamic functionalities** that enable user interactions — such as a shopping cart and ordering.
+
+By using **Astro** as the base framework and introducing **React components only where necessary**, the project achieves an excellent balance between speed, functionality, and simplicity.
+
+---
+
+## 🧠 Project Goals and Concept
+
+- Showcase the **power of the Astro framework** in building fast and optimized websites  
+- Integrate React components for more complex features (e.g., shopping cart)  
+- Demonstrate a project organization that is easy to maintain and extend  
+- Illustrate static rendering + dynamic behavior  
+- Bring closer the concept of modern fullstack tools through a practical online shop example  
+
+---
+
+## 🚀 Technologies Used
+
+| Technology    | Role in the Project                                          |
+|---------------|-------------------------------------------------------------|
+| **Astro**     | Main framework, used for generating static pages and routing |
+| **React**     | Used inside Astro for reactive parts of the site (cart, buttons) |
+| **Context API** | Sharing global cart state across components                |
+| **LocalStorage** | Storing cart data locally in the browser                   |
+| **CSS**       | Styling pages and products                                   |
+
+---
+
+## ⚙️ Application Features
+
+- ✅ **Home page (index.astro)**  
+  Displays a list of all products, each card has an "Add to Cart" button.
+
+- ✅ **Product page ([id].astro)**  
+  Detailed view of a single product, enlarged image, description, and price.
+
+- ✅ **Cart page (cart.astro)**  
+  Interactive React component showing products added to the cart, allowing ordering and item removal.
+
+- ✅ **Ordering**  
+  Simulated order process with success notification.
+
+- ✅ **Application state saved via Context API**  
+  All components access the same state without passing props.
+
+- ✅ **LocalStorage usage**  
+  Cart data persists even after page reload.
+
+- ✅ **Responsive design and SEO optimization**  
+  Thanks to Astro rendering, pages are search engine friendly and load fast.
+
+---
+
+## 🧩 Code Organization (Structure)
+
+src/
+├── components/
+│ ├── App.jsx # React component for displaying all products
+│ ├── CartApp.jsx # React component for the cart
+│ ├── CartContext.jsx # Global cart state
+│ ├── ProductCard.jsx # Single product card
+│ └── Header.astro # Navigation and logo
+│
+├── layouts/
+│ └── DefaultLayout.astro # Common layout for all pages
+│
+├── pages/
+│ ├── index.astro # Home page
+│ ├── cart.astro # Cart page
+│ └── [id].astro # Single product page
+│
+├── data/
+│ └── products.js # Product list (mock database)
+│
+└── styles/
+└── product.css # Product page styles
+
+## 🧠 How React Components Integration Works?
+
+In Astro, React components are included only when necessary — thanks to directives like `client:load`, `client:visible`, and `client:only`.
+
+Example:
+
+```astro
+---
+// index.astro
+import App from '../components/App.jsx';
+---
+<App client:load />
+
+This directive tells Astro to load the App.jsx component on the client side (browser) — only when the page loads.
+
+This allows maximum speed since JavaScript is used only where needed.
+
+How to Run the Project:
+
+1. Clone the repository:
+git clone https://github.com/project-name/tech-store.git
+
+2. Install npm packages:
+npm install
+
+3. Run the development server:
+Open http://localhost:4321 in your browser
+
+Detailed Explanation of the App’s Workflow
+Astro as the Foundation
+Astro generates static HTML pages during the build phase. This ensures fast page loading, excellent SEO, and reduced JavaScript usage. Pages like index.astro, cart.astro, and [id].astro are pre-rendered and ready to display.
+
+React for Dynamic Parts
+Instead of the entire app using React, Astro uses React only where necessary, greatly improving performance. The cart, adding/removing products, and ordering are enabled via React components loaded with client:load.
+
+Context API for State Management
+The cart uses the Context API to provide access to the same state from different components — without prop drilling. The user can add a product in one place and see the state update anywhere in the app.
+
+LocalStorage for Data Persistence
+Cart state is saved in localStorage, so even if the user refreshes the page, the data remains intact.
+
+DefaultLayout.astro
+The layout file is used to automatically include common elements like the Header and <main> in all pages. It contains the basic HTML structure, meta tags, and global styles.
+
+Example:
+
+---
+// layouts/DefaultLayout.astro
+import Header from '../components/Header.astro';
+---
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Tech Store</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body style="margin: 0; font-family: 'Segoe UI', sans-serif; background-color: #fff;">
+    <Header />
+    <main style="padding: 2rem;">
+      <slot />
+    </main>
+  </body>
+</html>
+
+Advantages of the Astro + React Combination
+🚀 Performance – pages load fast since most content is static
+
+🧠 Smart loading – JavaScript loads only for needed components
+
+🧩 Modularity – code is clearly organized into components and pages
+
+🎯 SEO friendly – content is visible to search engines without extra setup
+
+🛠️ Easy integration – ability to use any frontend library (React, Vue, Svelte, etc.)
+
+📦 Great developer experience – easy development, fast refresh, clear structure
+
+Example Usage of Astro Directives:
+---
+// cart.astro
+import CartApp from '../components/CartApp.jsx';
+---
+<CartApp client:load />
+// In layout file
+<Header />
+
+Example of Context API Usage
+import { createContext, useContext, useState } from 'react';
+
+const CartContext = createContext();
+export const useCart = () => useContext(CartContext);
+
+export const CartProvider = ({ children }) => {
+  const [cartItems, setCartItems] = useState([]);
+  // add and remove items from cart...
+  return (
+    <CartContext.Provider value={{ cartItems, setCartItems }}>
+      {children}
+    </CartContext.Provider>
+  );
+};
+
+Conclusion
+Tech Store is a demonstration app showing how to create a fast, efficient, and functional website using modern technologies like Astro and React.
+
+Astro enables fast rendering and easy SEO
+
+React is used only for interactive parts
+
+Code organization is simple, clear, and scalable
+
+Performance is superior compared to SPA apps
+
+By combining these tools, the app is:
+
+Easy to use
+
+Adaptable
+
+Fast for the end user
+
+On Serbian: 
 # 🛒 Tech Store – Web prodavnica zasnovana na Astro + React tehnologiji
 
 ## 📌 Opis projekta
